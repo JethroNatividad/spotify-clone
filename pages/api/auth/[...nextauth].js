@@ -1,12 +1,13 @@
 import NextAuth from "next-auth"
 import SpotifyProvider from 'next-auth/providers/spotify'
+import { authorizeUrl } from "../../../lib/spotify"
 
 export default NextAuth({
     providers: [
         SpotifyProvider({
             clientId: process.env.SPOTIFY_CLIENT_ID,
             clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-            authorization: 'https://accounts.spotify.com/authorize?scope=user-read-email'
+            authorization: authorizeUrl
         })
     ],
     secret: process.env.JWT_SECRET,
