@@ -1,7 +1,7 @@
 import React from 'react'
 import { getProviders, signIn, signOut, useSession } from "next-auth/react"
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps() {
     const providers = await getProviders()
     return {
         props: { providers }
