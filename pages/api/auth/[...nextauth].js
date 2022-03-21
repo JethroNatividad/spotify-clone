@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import SpotifyProvider from 'next-auth/providers/spotify'
-import { authorizeUrl } from "../../../lib/spotify"
+import spotifyApi, { authorizeUrl } from "../../../lib/spotify"
+
 
 export default NextAuth({
     providers: [
@@ -32,6 +33,9 @@ export default NextAuth({
             if (Date.now() < token.accessTokenExpires) {
                 return token
             }
+
+            // refresh accessToken
+            return await refreshAccessToken(token)
         },
         async session({ session, token }) {
             // data to be accessible in getSession or useSession
@@ -48,3 +52,9 @@ export default NextAuth({
     }
 
 })
+
+async function refreshAccessToken(token) {
+    spotifyApi.setAccessToken(token.accessToken)
+    spotifyApi.setRefreshToken(token.refreshToken)
+    return await spotifyApi.refreshAccessToken()
+}
