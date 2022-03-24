@@ -1,5 +1,5 @@
 import React from 'react'
-import { getProviders, signIn, signOut, useSession } from "next-auth/react"
+import { getProviders, signIn } from "next-auth/react"
 
 export async function getServerSideProps() {
     const providers = await getProviders()
@@ -10,22 +10,10 @@ export async function getServerSideProps() {
 
 const login = ({ providers }) => {
     const { spotify } = providers
-    const { data: session } = useSession()
-    console.log(providers)
-    console.log("SESSION FRONT >", session)
-    if (session) {
-        return (
-            <>
-                Signed in as { session.user.name } <br />
-                <button onClick={ () => signOut() }>Sign out</button>
-            </>
-        )
-    }
     return (
-        <>
-            Not signed in <br />
-            <button onClick={ () => signIn(spotify.id) }>Sign in with spotify</button>
-        </>
+        <div className='min-h-screen flex justify-center items-center bg-black'>
+            <button className='p-2 text-white hover:bg-green-600 transition-colors active:scale-95 rounded-2xl bg-green-700' onClick={ () => signIn(spotify.id) }>Sign in with Spotify</button>
+        </div>
     )
 }
 
