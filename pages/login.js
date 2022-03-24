@@ -12,7 +12,7 @@ const login = ({ providers }) => {
     const { spotify } = providers
     return (
         <div className='min-h-screen flex justify-center items-center bg-black'>
-            <button className='p-2 text-white hover:bg-green-600 transition-colors active:scale-95 rounded-2xl bg-green-700' onClick={ () => signIn(spotify.id) }>Sign in with Spotify</button>
+            <button className='p-2 text-white hover:bg-green-600 transition-colors active:scale-95 rounded-2xl bg-green-700' onClick={ () => signIn(spotify.id) }>Login with Spotify</button>
         </div>
     )
 }

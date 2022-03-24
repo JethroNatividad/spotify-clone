@@ -10,7 +10,7 @@ const Sidebar = () => {
             <div className='p-5 space-y-2'>
                 { session && (
                     <button className='flex items-center space-x-2 text-sm md:text-lg hover:text-white'>
-                        <p>Sign out</p>
+                        <p>Logout</p>
                     </button>
                 ) }
                 <SidebarItem Icon={ HomeIcon } label="Home" />
