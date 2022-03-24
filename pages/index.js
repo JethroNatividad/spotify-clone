@@ -4,7 +4,7 @@ import Sidebar from '../components/Sidebar'
 
 export default function Home() {
   return (
-    <div >
+    <div className='bg-black h-screen'>
       <Head>
         <title>Spotify clone</title>
       </Head>
